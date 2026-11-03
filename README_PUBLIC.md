@@ -4,7 +4,7 @@ Status: PUBLIC SYNTHETIC DEMONSTRATION / NOT A LIVE PRODUCTION SECURITY OR TRADI
 Prepared on S21, November 3, 2026.
 
 ## Open locally
-Open index.html in a modern browser or deploy the contents of this folder with Cloudflare Pages Direct Upload (no GitHub or source-control integration required).
+Open index.html in a modern browser. This isolated public demo is also published to the project GitHub repository; deployment is tracked separately.
 
 ## What works
 - Twenty fictional, individually signed software-evidence cases, with an offline local verification script.
@@ -35,7 +35,7 @@ No external API or credentials are required by the public site or default tests.
 - This package is public safe; publishing it is not confirmation of hackathon acceptance or submission.
 
 ## Hackathon organizer requirement
-The organizer's November 3, 2026 email states that a public GitHub repository is mandatory. The project owner does NOT authorize GitHub. Cloudflare Pages or a publicly shared source ZIP may demonstrate the work, but organizer written approval of a non-GitHub alternative remains REQUIRED before claiming entry-rule compliance.
+The organizer's November 3, 2026 email states that a public GitHub repository is mandatory. The owner subsequently authorized publication of this isolated synthetic demo only. A public repository does not itself constitute official hackathon submission.
 
 ## Publication and safety
 Deploy ONLY this folder. Do not deploy the original project root, private Java/Rust code, credentials, local logs, firmware evidence, unpublished photo, or unreleased film assets.
