@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#07110f"><title>AXIS GHOSTGRID | Meta Hackathon Offline Lab</title>
+<style>
+:root{color-scheme:dark;--bg:#06100d;--panel:#10211b;--panel2:#11251e;--border:#325040;--green:#6df3ac;--text:#effbf4;--muted:#aec9b8;--yellow:#ffd58b;--red:#ffa0a1;--blue:#b5cfff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse 60% 47% at 73% -5%,#115039 0%,transparent 100%),var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+button{font:inherit;cursor:pointer}button:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+header{padding:15px clamp(15px,3vw,42px);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:14px;background:#07140fb8;backdrop-filter:blur(16px);position:sticky;top:0;z-index:5}
+.brand{letter-spacing:.16em;font-size:24px;font-weight:900;line-height:1}.brand small{font-size:9px;display:block;letter-spacing:.28em;color:var(--green);margin-top:7px}
+.mode{font-size:11px;color:#f8d491;background:#3b3120;padding:8px 12px;border:1px solid #94784b;border-radius:30px;font-weight:800;letter-spacing:.07em}
+main{max-width:1350px;padding:32px 22px 90px;margin:auto}
+.eyebrow{color:var(--green);font-size:11px;letter-spacing:.24em;font-weight:900;text-transform:uppercase}
+h1{font-size:clamp(34px,6vw,69px);letter-spacing:-.06em;line-height:1.02;margin:12px 0 16px;max-width:850px}h1 em{font-style:normal;color:var(--green)}.lead{max-width:740px;color:var(--muted);font-size:16px;line-height:1.7}
+.hero{display:flex;justify-content:space-between;align-items:end;gap:25px;flex-wrap:wrap}
+.hero aside{border-left:3px solid var(--green);padding:8px 18px;color:#c1edce;font-size:13px;background:#13382855;max-width:330px}
+.notice{margin:26px 0;background:#251e13;color:#f8dba2;border:1px solid #8b7447;border-radius:11px;padding:13px 16px;font-size:12px}
+.three{display:grid;grid-template-columns:270px minmax(0,1.1fr) minmax(260px,.85fr);gap:14px;align-items:start}
+.card{border:1px solid var(--border);border-radius:16px;background:linear-gradient(135deg,#142a20ec,#0b1c16f2);box-shadow:0 14px 40px #0002;min-width:0}
+.card h2{font-size:14px;margin:0;font-weight:850;letter-spacing:.05em}.card .hd{padding:18px 18px 0}.body{padding:17px 18px 21px}
+.scenarios{display:flex;flex-direction:column;gap:8px;max-height:735px;overflow:auto;scrollbar-color:#3d6a51 transparent}
+.scenario{border:1px solid #355341;background:#0b1a14;color:var(--text);padding:12px;border-radius:9px;text-align:left;width:100%}.scenario.active{border-color:var(--green);background:#16402d;box-shadow:inset 3px 0 var(--green)}.scenario-title{display:block;font-size:13px;font-weight:850}.scenario-sub{display:block;font-size:11px;color:#adc5b8;line-height:1.4;padding-top:4px}
+.pretitle{font-size:12px;color:var(--green);font-weight:800;letter-spacing:.16em;text-transform:uppercase}.bigtitle{font-size:clamp(22px,3vw,31px);line-height:1.15;margin:12px 0 11px}.muted{color:var(--muted)}
+.rule{height:1px;background:var(--border);margin:19px 0}.decision{font-size:clamp(25px,3vw,39px);letter-spacing:-.025em;font-weight:950;overflow-wrap:anywhere;line-height:1.15;margin:7px 0}.warning{color:var(--yellow)}.danger{color:var(--red)}.positive{color:var(--green)}.review{color:var(--blue)}
+.actionrow{display:flex;gap:8px;flex-wrap:wrap}.btn{padding:10px 12px;border-radius:8px;background:#163526;border:1px solid #3b7857;color:var(--text);font-weight:800;font-size:12px}.btn:hover{border-color:var(--green)}.btn.primary{background:#53eba7;color:#052012;border-color:#53eba7}.btn.ghost{background:transparent}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.field{border:1px solid #315342;background:#091a13;border-radius:9px;padding:10px 12px}.field small{display:block;color:#9ec4ab;font-size:10px;font-weight:900;letter-spacing:.12em}.field strong{font-size:12px;display:block;padding-top:5px;overflow-wrap:anywhere;line-height:1.45}
+.log{white-space:pre-wrap;font:12px/1.85 ui-monospace,SFMono-Regular,Consolas,monospace;color:#b6e7c8;background:#06110d;border:1px solid #254537;border-radius:10px;padding:13px;min-height:178px;overflow-wrap:anywhere}.evidence{padding:10px;border:1px solid #2f5440;background:#0a2016;border-radius:9px}.evidence small{display:block;color:#86dab0;font-size:10px}.evidence strong{display:block;font-size:12px;overflow-wrap:anywhere;margin-top:4px}.tenD{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}.kpi{background:#0b2017;border:1px solid #30513c;border-radius:13px;padding:14px 16px}.kpi b{display:block;color:var(--green);font-size:24px}.kpi span{color:var(--muted);font-size:11px}
+section.bottom{margin-top:22px}.disclaimer{font-size:12px;color:var(--muted);line-height:1.6;margin-top:22px}footer{margin-top:30px;border-top:1px solid var(--border);padding-top:18px;color:#95b8a3;font-size:12px}
+@media(max-width:1120px){.three{grid-template-columns:250px 1fr}.right{grid-column:1/-1}.tenD{grid-template-columns:repeat(5,1fr)}}
+@media(max-width:730px){main{padding:24px 12px 65px}.three{grid-template-columns:1fr}.right{grid-column:auto}.scenarios{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-height:none}.tenD{grid-template-columns:repeat(2,minmax(0,1fr))}.hero aside{max-width:none}.kpis{grid-template-columns:repeat(2,1fr)}header{padding:13px}.brand{font-size:21px}.mode{font-size:9px}.card .hd{padding:15px 15px 0}.body{padding:15px}}
+@media(max-width:375px){.scenarios{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head><body>
+<header><div class="brand">AXIS<small>AHEAD BY DESIGN</small></div><div class="mode">GHOSTGRID · OFFLINE LAB</div></header>
+<main>
+ <div class="hero"><div><div class="eyebrow">META HACKATHON · RESEARCH DEMONSTRATOR V10</div><h1>Evidence first.<br><em>Authority never guessed.</em></h1><p class="lead">An offline-first, adversarial security evidence laboratory. Run fictional attacks against a transparent mock policy boundary, inspect 10D evidence, and replay the first signal—all without a backend, permissions, or proprietary production code.</p></div><aside><strong>AXIS / THE DIFFERENCE</strong><div>AI explains suspicious evidence. It cannot grant itself authority, downgrade controls, or turn uncertainty into “SAFE.”</div></aside></div>
+ <div class="notice"><strong>SYNTHETIC DEMO ONLY.</strong> This webpage does not scan devices, connect to Meta, validate deepfakes, authenticate credentials, operate radios, send 577 distress messages, or run AXIS RYAN/Rust. It is NOT a security certification or Android installation.</div>
+ <div class="three">
+   <section class="card"><div class="hd"><h2>01 / ATTACK PLAYGROUND</h2><p class="muted" style="font-size:12px">Ten reproducible fictional scenarios</p></div><div class="body scenarios" id="scenarioList"></div></section>
+   <section class="card"><div class="hd"><h2>02 / EVIDENCE-GATED DECISION</h2></div><div class="body">
+      <div class="pretitle" id="activeID">forged-origin</div><div class="bigtitle" id="scenarioTitle">Forged Radio Observation</div><p class="muted" id="summary"></p><div class="rule"></div>
+      <div class="muted" style="font-size:11px;font-weight:900;letter-spacing:.1em">LOCAL POLICY EVALUATION</div><div class="decision warning" id="state">HOLD</div><p id="reason" class="muted">No source proof is present.</p>
+      <div class="grid2"><div class="field"><small>POLICY REASON CODE</small><strong id="code"></strong></div><div class="field"><small>PRODUCTION AUTHORITY</small><strong id="authority">NONE</strong></div><div class="field"><small>NANO MEMORY CONCEPT</small><strong id="memory">SESSION-ONLY</strong></div><div class="field"><small>PROTECTED SIDE EFFECTS</small><strong>DISABLED</strong></div></div>
+      <div class="rule"></div><div class="actionrow"><button id="run" class="btn primary">Run synthetic scenario</button><button id="replay" class="btn">Replay history</button><button id="export" class="btn">Export sanitized JSON</button><button id="reset" class="btn ghost">Reset local session</button></div>
+      <div class="rule"></div><div class="pretitle">T0 → T1 → T2 / SIMULATED INVESTIGATION</div><pre id="log" class="log"></pre>
+      <p class="disclaimer">Replay is an in-memory record, not cryptographically authenticated Nano Memory or an append-only production ledger. The simulated positive action authorizes page display only.</p>
+   </div></section>
+   <aside class="card right"><div class="hd"><h2>03 / 10D EVIDENCE AUTOPSY</h2><p class="muted" style="font-size:12px">Shows what is known, missing, and prohibited</p></div><div class="body tenD" id="tenD"></div></aside>
+ </div>
+ <div class="kpis"><div class="kpi"><b>10</b><span>Fictional threat scenarios</span></div><div class="kpi"><b id="counter">1</b><span>Local evaluations this session</span></div><div class="kpi"><b>0</b><span>Remote calls / uploads</span></div><div class="kpi"><b>HOLD</b><span>Production integration gate</span></div></div>
+ <section class="bottom card"><div class="body"><div class="eyebrow">PRESENTATION BOUNDARY</div><p class="muted">GHOSTGRID V10 is a newly implemented standalone demonstration based on the preserved AXIS concept and V9 documentation. The historical V9 offline test suite results are separately documented in the included reference material; this page does not claim those suites were rerun. Media-source examples are fictional, and all provider independence is an assumption of the mock inputs.</p></div></section>
+ <footer>AXIS — AHEAD BY DESIGN · Powered by FEACINTH · Security authority: RYAN (production boundary not connected) · PRIVACY: demo memory stays in this browser tab · No Python · No Replit · No StrongBox requirement</footer>
+</main>
+<script>/* AXIS GHOSTGRID / Hackathon V10: standalone SYNTHETIC evidence simulator.
+ * Public competition demo logic only. NOT AXIS RYAN policy authority, not security software.
+ * No device APIs, I/O, keys, internet requests or dependency imports.
+ */
+(function (root, factory) {
+  'use strict';
+  const api = factory();
+  if (typeof module === 'object' && module.exports) module.exports = api;
+  else root.GhostgridDemoEngine = api;
+})(typeof globalThis === 'object' ? globalThis : this, function () {
+  'use strict';
+  const SCENARIOS = Object.freeze([
+    {id:'forged-origin',title:'Forged Radio Observation',short:'Identity impersonation',category:'Origin integrity',sourceVerified:false,counter:11,floor:10,nonceValid:true,networkAvailable:true,protectedAction:true,summary:'A radio origin is plausible but unverified.',signals:[],label:'Missing origin proof'},
+    {id:'prompt-injection',title:'Agent Prompt Injection',short:'An instruction hiding in retrieved evidence',category:'AI authority',sourceVerified:true,counter:12,floor:10,nonceValid:true,networkAvailable:true,promptInjection:true,protectedAction:true,summary:'Untrusted content attempts to direct an autonomous security action.',signals:[],label:'No delegated authority'},
+    {id:'replayed-checkpoint',title:'Replayed Nano Checkpoint',short:'Stale state offered after restart',category:'Memory integrity',sourceVerified:true,counter:3,floor:10,nonceValid:false,networkAvailable:true,protectedAction:true,summary:'An earlier synthetic checkpoint is presented as current authority.',signals:[],label:'Replay floor exceeded'},
+    {id:'crypto-downgrade',title:'Hybrid Crypto Downgrade',short:'Post-quantum capability removed',category:'Negotiation policy',sourceVerified:true,counter:12,floor:10,nonceValid:true,networkAvailable:true,pqcRequired:true,pqcOffered:false,protectedAction:true,summary:'A synthetic peer omits a required hybrid negotiation flag.',signals:[],label:'No silent downgrade'},
+    {id:'radio-blackout',title:'Radio Blackout Continuity',short:'No network, local history remains',category:'Offline resilience',sourceVerified:true,counter:12,floor:10,nonceValid:true,networkAvailable:false,protectedAction:true,summary:'No outside corroboration can be obtained during a fictional outage.',signals:[],label:'Offline evidence only'},
+    {id:'deepfake-conflict',title:'Deepfake Source Disagreement',short:'Two independent synthetic model signals conflict',category:'Media authenticity',sourceVerified:true,counter:12,floor:10,nonceValid:true,networkAvailable:true,protectedAction:false,signals:[{group:'mock-vision-A',finding:'FAKE'},{group:'mock-vision-B',finding:'REAL'}],summary:'Fictional detector signals disagree about a fictional image.',label:'Conflicting evidence'},
+    {id:'deepfake-correlated',title:'Deepfake Correlated Models',short:'Two detectors share the same dependency',category:'Media authenticity',sourceVerified:true,counter:12,floor:10,nonceValid:true,networkAvailable:true,protectedAction:false,signals:[{group:'shared-family',finding:'FAKE'},{group:'shared-family',finding:'FAKE'}],summary:'Two votes are actually from one declared model family.',label:'Not independent'},
+    {id:'deepfake-multisource',title:'Two-Source Fake Signal',short:'Two independent mock detectors agree',category:'Media authenticity',sourceVerified:true,counter:12,floor:10,nonceValid:true,networkAvailable:true,protectedAction:false,signals:[{group:'mock-A',finding:'FAKE'},{group:'mock-B',finding:'FAKE'}],summary:'An offline manual mock of two independent evidence reports.',label:'Review only, never authenticated'},
+    {id:'benign-simulation',title:'Harmless Local Simulation',short:'No protected side effect requested',category:'Positive controls',sourceVerified:true,counter:12,floor:10,nonceValid:true,networkAvailable:true,protectedAction:false,action:'display-local-mock',signals:[],summary:'All stipulated synthetic fields exist for a display-only action.',label:'No system privileges'},
+    {id:'rescue-577',title:'577 Rescue Witness',short:'Fictional SOS with no transmission',category:'Rescue continuity',sourceVerified:true,counter:12,floor:10,nonceValid:true,networkAvailable:false,protectedAction:true,summary:'A fictional distress event must not be claimed delivered offline.',signals:[],label:'No real SOS sent'}
+  ]);
+  const byId = new Map(SCENARIOS.map(s=>[s.id, Object.freeze(s)]));
+  const STATUSES = Object.freeze({DENY:'DENY',HOLD:'HOLD',REVIEW_FAKE_SIGNAL:'REVIEW_FAKE_SIGNAL',MOCK_ALLOW:'MOCK_ALLOW'});
+  function evaluate(s) {
+    // Caller-supplied properties cannot confer production authority. Decisions are demo-only.
+    if (!s || typeof s !== 'object') return verdict('HOLD','Malformed or missing synthetic observation','INPUT_UNAVAILABLE');
+    if (s.promptInjection === true) return verdict('DENY','Untrusted text attempted to become an instruction','MODEL_INSTRUCTION_DENIED');
+    if (s.pqcRequired === true && s.pqcOffered !== true) return verdict('DENY','Declared post-quantum negotiation policy would be downgraded','DOWNGRADE_DENIED');
+    if (s.sourceVerified !== true) return verdict('HOLD','Origin is not verified even if the claim looks plausible','ORIGIN_UNVERIFIED');
+    if (!Number.isSafeInteger(s.counter) || !Number.isSafeInteger(s.floor) || s.counter <= s.floor || s.nonceValid !== true)
+      return verdict('HOLD','Freshness / nonce / replay evidence is missing or stale','REPLAY_OR_FRESHNESS_HOLD');
+    if (s.networkAvailable === false) return verdict('HOLD','Local evidence cannot establish remote availability or delivery','OFFLINE_CORROBORATION_HOLD');
+    if (Array.isArray(s.signals) && s.signals.length) {
+      const family = new Map();
+      for (const obs of s.signals) {
+        if (!obs || typeof obs.group !== 'string' || !obs.group.trim() || !['FAKE','REAL'].includes(obs.finding))
+          return verdict('HOLD','Detector evidence contains unknown or invalid fields','DETECTOR_UNKNOWN');
+        if (family.has(obs.group) && family.get(obs.group) !== obs.finding)
+          return verdict('HOLD','One declared provider family contradicted itself','DEPENDENCY_DISAGREEMENT');
+        family.set(obs.group,obs.finding);
+      }
+      if (family.size < 2) return verdict('HOLD','Correlated detectors count as only one source','ONE_INDEPENDENCE_GROUP');
+      if ([...family.values()].some(x=>x !== 'FAKE')) return verdict('HOLD','Multi-source assessment disagrees; no authenticity decision','MULTISOURCE_DISAGREEMENT');
+      return verdict('REVIEW_FAKE_SIGNAL','Multiple fictional independent reports suggest review, not authentication','MULTISOURCE_FAKE_REVIEW');
+    }
+    if (s.protectedAction === true || s.action !== 'display-local-mock')
+      return verdict('HOLD','No real Rust/RYAN authorization witness exists in this demo','NO_REAL_AUTHORITY');
+    return verdict('MOCK_ALLOW','Benign page-only display permitted in this fictional simulation','DISPLAY_ONLY_MOCK');
+  }
+  function verdict(decision,explanation,code) { return Object.freeze({decision,explanation,code,productionAuthority:'NONE',safetyCertification:false}); }
+  function evidenceTenD(s, result) {
+    return [
+      ['01 Observation',s.id],['02 Source',s.sourceVerified?'synthetic fixture assertion':'unverified'],
+      ['03 Spatial','fictional / no GPS'],['04 Time','synthetic local event'],
+      ['05 Provenance','unsigned demo fixture'],['06 Relationships',Array.isArray(s.signals)?`${s.signals.length} fictional model report(s)`:'none'],
+      ['07 Simulation','isolated browser test'],['08 Prediction','not calibrated'],
+      ['09 Authority witness', 'NO PRODUCTION WITNESS'],['10 Recovery witness',result.code==='REPLAY_OR_FRESHNESS_HOLD'?'replay rejected by mock':'no durable recovery claim']
+    ].map(([dimension,value])=>({dimension,value}));
+  }
+  function createSession() {
+    const records=[];const seen=new Map();
+    function run(id) {
+      const s=byId.get(id);if(!s) throw new Error('Unknown synthetic scenario ID');
+      const result=evaluate(s);
+      const firstSequence=seen.has(id)?seen.get(id):records.length+1;
+      if(!seen.has(id)) seen.set(id,firstSequence);
+      const seq=records.length+1;
+      const entry={seq,scenarioId:id,decision:result.decision,code:result.code,firstSequence,repeat:seq!==firstSequence};
+      if(records.length >= 1000) throw new Error('Bounded in-memory demo event limit reached');
+      records.push(Object.freeze(entry));
+      return {scenario:{id:s.id,title:s.title,short:s.short,category:s.category,summary:s.summary,label:s.label},result,entry,evidence:evidenceTenD(s,result),trace:[
+        `T0  INPUT  fictional fixture ${s.id}`,
+        `T1  POLICY ${result.code}`,
+        `T1  ACTION no privileged side effects`,
+        `T2  REPLAY first observed at local event #${firstSequence}`,
+        `T2  MEMORY in RAM only; no checkpoint or sealed ledger`,
+        `END VERDICT ${result.decision} — demo-only`
+      ]};
+    }
+    function replay(id) {
+      if(!byId.has(id)) throw new Error('Unknown synthetic scenario ID');
+      return records.filter(r=>r.scenarioId===id).map(r=>({...r}));
+    }
+    function exportSanitized() {
+      return {artifact:'AXIS GHOSTGRID V10',kind:'SYNTHETIC_ONLY',productionAuthority:'NONE',cases:records.map(r=>({...r})),warning:'No real incidents, real identities, device telemetry, AI model outputs or signed witnesses included.'};
+    }
+    return Object.freeze({run,replay,exportSanitized,count:()=>records.length});
+  }
+  return Object.freeze({SCENARIOS,STATUSES,evaluate,createSession});
+});
+</script>
+<script>/* AXIS_APP_INSERT: replaced at build time. */
+'use strict';
+(function(){
+ const engine=globalThis.GhostgridDemoEngine;
+ if(!engine){document.getElementById('state').textContent='HOLD: engine missing';return;}
+ const session=engine.createSession();let selected='forged-origin';let last=null;
+ const $=id=>document.getElementById(id);
+ const esc=v=>String(v).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+ const sidebar=$('scenarioList');
+ function drawMenu(){sidebar.innerHTML='';engine.SCENARIOS.forEach(s=>{const b=document.createElement('button');b.className='scenario'+(s.id===selected?' active':'');b.setAttribute('aria-pressed',String(s.id===selected));b.innerHTML=`<span class="scenario-title">${esc(s.title)}</span><span class="scenario-sub">${esc(s.short)}</span>`;b.addEventListener('click',()=>{selected=s.id;drawMenu();run()});sidebar.append(b)})}
+ function drawEvidence(e){const container=$('tenD');container.innerHTML='';for(const o of e){const d=document.createElement('div');d.className='evidence';d.innerHTML=`<small>${esc(o.dimension)}</small><strong>${esc(o.value)}</strong>`;container.append(d)}}
+ function render(out){last=out;const v=out.result.decision;const state=$('state');state.textContent=v.replaceAll('_',' ');state.className='decision '+(v==='DENY'?'danger':v==='HOLD'?'warning':v==='MOCK_ALLOW'?'positive':'review');$('scenarioTitle').textContent=out.scenario.title;$('summary').textContent=out.scenario.summary;$('reason').textContent=out.result.explanation;$('code').textContent=out.result.code;$('memory').textContent=out.entry.repeat?`MATCHED FIRST SIGNAL #${out.entry.firstSequence} / REPEAT #${out.entry.seq}`:`FIRST SEEN / LOCAL EPISODE #${out.entry.seq}`;$('counter').textContent=String(session.count());$('log').textContent=out.trace.join('\n');$('authority').textContent=out.result.productionAuthority;drawEvidence(out.evidence);$('activeID').textContent=out.scenario.id}
+ function run(){render(session.run(selected))}
+ $('run').addEventListener('click',run);
+ $('replay').addEventListener('click',()=>{const entries=session.replay(selected);$('log').textContent=['IN-MEMORY REPLAY / NOT A SIGNED LEDGER',...entries.map(r=>`#${r.seq}  ${r.scenarioId}  ${r.decision}  original #${r.firstSequence}`),'No protected actions were replayed.'].join('\n');$('memory').textContent=entries.length+' IN-MEMORY OBSERVATION(S) / NOT PERSISTED'});
+ $('export').addEventListener('click',()=>{const x=JSON.stringify(session.exportSanitized(),null,2);const b=new Blob([x],{type:'application/json'});const url=URL.createObjectURL(b);const a=document.createElement('a');a.href=url;a.download='axis_ghostgrid_synthetic_trace.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),500)});
+ $('reset').addEventListener('click',()=>{location.reload()});
+ drawMenu();run();
+})();
+</script>
+</body></html>

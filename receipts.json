@@ -1,0 +1,268 @@
+{
+  "schema": "AXIS_PUBLIC_SYNTHETIC_RECEIPTS_V1",
+  "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAkRthqUsoMYzZjFX0VBSrMKh+hehhSCm8DQqf4bs67qs=\n-----END PUBLIC KEY-----\n",
+  "root": "4a276835adfffc9012b1033db2d7ecc3881caa352e3c4bc0842137461d78a95d",
+  "records": [
+    {
+      "body": {
+        "sequence": 1,
+        "case_id": "crypto-theft",
+        "act": "01",
+        "decision": "REVIEW",
+        "source": "AXIS_PUBLIC_SYNTHETIC_FIXTURE",
+        "visibility": "PARTIAL",
+        "prev_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "hash": "c1ea7abb82214fafede04024720f4acd19127a1f84eea857e0c302373e6dc026",
+      "signature": "S5ehKnHMelREmgrrNb7PJGRvFbZ+1cV2/UiRuujvc0McmMcpvPJLVYdMYL5/Iz7VkNaEgeK/wHfy1GmxNoMkAA=="
+    },
+    {
+      "body": {
+        "sequence": 2,
+        "case_id": "wallet-approval",
+        "act": "01",
+        "decision": "DENY_SIM",
+        "source": "AXIS_PUBLIC_SYNTHETIC_FIXTURE",
+        "visibility": "SIMULATED",
+        "prev_hash": "c1ea7abb82214fafede04024720f4acd19127a1f84eea857e0c302373e6dc026"
+      },
+      "hash": "43911734713ad90b21b39e823b4e9c63621b5d9d9e2e8b79133bbfa4949f97d8",
+      "signature": "+bN/4h7zLZPdted7FM/CRiPbmeVJloUeDqnH1WNANx4d0DzXPLOAKXAcS8LXddXD04zoZah2nBV1cUDaYUGXDg=="
+    },
+    {
+      "body": {
+        "sequence": 3,
+        "case_id": "chain-trace",
+        "act": "01",
+        "decision": "HOLD",
+        "source": "AXIS_PUBLIC_SYNTHETIC_FIXTURE",
+        "visibility": "PARTIAL",
+        "prev_hash": "43911734713ad90b21b39e823b4e9c63621b5d9d9e2e8b79133bbfa4949f97d8"
+      },
+      "hash": "e7bbe792a9e6aec8712b96532a2c33d8ba7cc234873625d3032ba80faf3390ef",
+      "signature": "rryLAIYh40EmhG6GW0ZzIi2iT8EUx4DbqzA67bTdhRFItiRT1QCpDNoXwk/4HKAt0ZYxEP7qXj8nXqPqtKzzAQ=="
+    },
+    {
+      "body": {
+        "sequence": 4,
+        "case_id": "address-poison",
+        "act": "01",
+        "decision": "REVIEW",
+        "source": "AXIS_PUBLIC_SYNTHETIC_FIXTURE",
+        "visibility": "SIMULATED",
+        "prev_hash": "e7bbe792a9e6aec8712b96532a2c33d8ba7cc234873625d3032ba80faf3390ef"
+      },
+      "hash": "53e490ee3460f206f82dd599124c5119ed1d8e7c0c7acb4584039bb314466bc6",
+      "signature": "P6o75KNyaCI1usSTDTS1VQojYV8FsFeRskMH8XLaQ15bbaYWKDEKvchQQGJY3wCT9NtNzLQQFkkYR5Ymu5dBBg=="
+    },
+    {
+      "body": {
+        "sequence": 5,
+        "case_id": "scam-shield",
+        "act": "01",
+        "decision": "REVIEW",
+        "source": "AXIS_PUBLIC_SYNTHETIC_FIXTURE",
+        "visibility": "SIMULATED",
+        "prev_hash": "53e490ee3460f206f82dd599124c5119ed1d8e7c0c7acb4584039bb314466bc6"
+      },
+      "hash": "2120e770307ac4417e810a47d6786c5570b2f762f5fb1b9513212aa74fc59132",
+      "signature": "1K9EeE/pxFDxoXrxOo9LVgOZe6hEcjSOKdn9rGggq/hqo4gsyiMyCs4ilIfeiYkZGKbSI595mq0kzCKBl7GEBg=="
+    },
+    {
+      "body": {
+        "sequence": 6,
+        "case_id": "ghost-first-touch",
+        "act": "02",
+        "decision": "REVIEW",
+        "source": "AXIS_PUBLIC_SYNTHETIC_FIXTURE",
+        "visibility": "SIMULATED",
+        "prev_hash": "2120e770307ac4417e810a47d6786c5570b2f762f5fb1b9513212aa74fc59132"
+      },
+      "hash": "1e75dd4eb3ba6d01a31516cb5b0bff25d929b67ae0c186ad8f7274736b1246c8",
+      "signature": "omG/NNidL/f3c10XDcYjmwFv+GQAcJ4Taoa7K1SWi6/aLLONuCgDrYkOq+2xXEbDHVNvkJ/Rjub+TqZSHPP9Ag=="
+    },
+    {
+      "body": {
+        "sequence": 7,
+        "case_id": "offline-copy",
+        "act": "02",
+        "decision": "NO_ALERT",
+        "source": "AXIS_PUBLIC_SYNTHETIC_FIXTURE",
+        "visibility": "NOT_OBSERVABLE",
+        "prev_hash": "1e75dd4eb3ba6d01a31516cb5b0bff25d929b67ae0c186ad8f7274736b1246c8"
+      },
+      "hash": "cd8e653dbeed48b2912986b1a047c5dc18b925ca96c9e8789ec8c0e3fa0c4d45",
+      "signature": "eKXyAyEfkH1Ec8plN63p1vx7HYuDYP4x0tB4TVlcp6Gr4GLzRlGcDgL1fIcaEfxzIS+pEVmMPPOR8RRiiMOLCA=="
+    },
+    {
+      "body": {
+        "sequence": 8,
+        "case_id": "honeytoken",
+        "act": "02",
+        "decision": "REVIEW",
+        "source": "AXIS_PUBLIC_SYNTHETIC_FIXTURE",
+        "visibility": "SIMULATED",
+        "prev_hash": "cd8e653dbeed48b2912986b1a047c5dc18b925ca96c9e8789ec8c0e3fa0c4d45"
+      },
+      "hash": "8a100561942c0e182e01c9196888f3cf6394c65f918f38b4238ccea951e3f469",
+      "signature": "KQSh3W29BS5fjoB0gDPYZEdz2LcHpIdT2AiHaiWw8qLt7wT/brZ3mdFbbEKn5r558mtMqS2OJS4Lko+OF8BUBg=="
+    },
+    {
+      "body": {
+        "sequence": 9,
+        "case_id": "stolen-identity",
+        "act": "03",
+        "decision": "HOLD",
+        "source": "AXIS_PUBLIC_SYNTHETIC_FIXTURE",
+        "visibility": "PARTIAL",
+        "prev_hash": "8a100561942c0e182e01c9196888f3cf6394c65f918f38b4238ccea951e3f469"
+      },
+      "hash": "63064d8a9763619f7da795d6a9dc80b42e8adbdd9f4ab8bac1b7b90876d7bacd",
+      "signature": "LoGpMNS9NxReBL9CikBwvkIV+MXxYvHMxavcQidSthf56Wioj1wLvdgEJ9q4L8NCCE5YFNkGzx+Ahikkrc9sAQ=="
+    },
+    {
+      "body": {
+        "sequence": 10,
+        "case_id": "false-corridor",
+        "act": "03",
+        "decision": "HOLD",
+        "source": "AXIS_PUBLIC_SYNTHETIC_FIXTURE",
+        "visibility": "SIMULATED",
+        "prev_hash": "63064d8a9763619f7da795d6a9dc80b42e8adbdd9f4ab8bac1b7b90876d7bacd"
+      },
+      "hash": "62f2d0548f0ec6784c444d559fd194c247e0ab695d5d985e49736027d063e8dd",
+      "signature": "QL9JQMYX6pFGA9Tyk7xXR3/F7kAqihobM5JmiV5JUfUvBWfqVV07xwJnBcQicgzmt9H12IqnspE1uUvkgxHXAw=="
+    },
+    {
+      "body": {
+        "sequence": 11,
+        "case_id": "prompt-injection",
+        "act": "03",
+        "decision": "DENY_SIM",
+        "source": "AXIS_PUBLIC_SYNTHETIC_FIXTURE",
+        "visibility": "SIMULATED",
+        "prev_hash": "62f2d0548f0ec6784c444d559fd194c247e0ab695d5d985e49736027d063e8dd"
+      },
+      "hash": "9188704f00ad9469c98eae8003a7ac7bacc01e4abf8c4722ec2e4249d9789741",
+      "signature": "xD12P0uKqICxj9WzzFls/qU3pNERmFj4rq3I7tVHJrJYKZTyerdEnkwjYb6B9FsQUvsajDfgaMpIviK3Q3XcDw=="
+    },
+    {
+      "body": {
+        "sequence": 12,
+        "case_id": "witness-forgery",
+        "act": "04",
+        "decision": "HOLD",
+        "source": "AXIS_PUBLIC_SYNTHETIC_FIXTURE",
+        "visibility": "SIMULATED",
+        "prev_hash": "9188704f00ad9469c98eae8003a7ac7bacc01e4abf8c4722ec2e4249d9789741"
+      },
+      "hash": "e1cd12e04e5ad294cef20613533caf90121826d74d4a45fd6e29b3170a55103e",
+      "signature": "0QG8kuygZcDUIOYFzJcK3GLHnuGDxSbfrwM2pkRucMmduM9c5nKk0OmOk56YuU0F/E4d6Io7FbI2HCZ9hI8+Dw=="
+    },
+    {
+      "body": {
+        "sequence": 13,
+        "case_id": "journal-replay",
+        "act": "04",
+        "decision": "HOLD",
+        "source": "AXIS_PUBLIC_SYNTHETIC_FIXTURE",
+        "visibility": "SIMULATED",
+        "prev_hash": "e1cd12e04e5ad294cef20613533caf90121826d74d4a45fd6e29b3170a55103e"
+      },
+      "hash": "2c4638f3cbef15c2074b976069d692123658a0bc1b165ca22f8e3979edc667ab",
+      "signature": "qie/8Yr0I2yNa8wmVTJ42xtEq9t2sq0Z/uKOfRWTqMzojhIP7gk8vgeJdMiGGzwBGVKaFFTW/zPqJrDF1Cp6DQ=="
+    },
+    {
+      "body": {
+        "sequence": 14,
+        "case_id": "ghost-capture",
+        "act": "04",
+        "decision": "DENY_SIM",
+        "source": "AXIS_PUBLIC_SYNTHETIC_FIXTURE",
+        "visibility": "PARTIAL",
+        "prev_hash": "2c4638f3cbef15c2074b976069d692123658a0bc1b165ca22f8e3979edc667ab"
+      },
+      "hash": "d5601e80b9b38fe94f67b98cc51e753abc05e4d38959f9826bb6d10fa9e92144",
+      "signature": "mzL2Lky+gxgx6n6lAe3oVdsZatndw45oglYIrgFQ+vL/v8uEQzsXbJP8jMCE8anoe9yolHYxUPYNDP90V7kYAQ=="
+    },
+    {
+      "body": {
+        "sequence": 15,
+        "case_id": "hidden-wall",
+        "act": "04",
+        "decision": "HOLD",
+        "source": "AXIS_PUBLIC_SYNTHETIC_FIXTURE",
+        "visibility": "SIMULATED",
+        "prev_hash": "d5601e80b9b38fe94f67b98cc51e753abc05e4d38959f9826bb6d10fa9e92144"
+      },
+      "hash": "1099eef1e08f8560ea8a359db22de213bf4c2047fbe906697a8e1082694f184b",
+      "signature": "cBjNGNbuWJuyzJq9bJNKttp4dATc9ya9WR/QtBACz/j0dWsmzYgdgNYzQPzJ1+yzQSyH4VBVU/J2/d4O4qIQBw=="
+    },
+    {
+      "body": {
+        "sequence": 16,
+        "case_id": "intrusion-vpn",
+        "act": "05",
+        "decision": "REVIEW",
+        "source": "AXIS_PUBLIC_SYNTHETIC_FIXTURE",
+        "visibility": "SIMULATED",
+        "prev_hash": "1099eef1e08f8560ea8a359db22de213bf4c2047fbe906697a8e1082694f184b"
+      },
+      "hash": "5ef4f3ab0f7298ffc6c73d07fadc8a3b57e6dfd77c125ef16056b03d99f82a6d",
+      "signature": "QONtGU5HI/BZcIHFh+AgCj6Y9D0xLifog9neu2ZJx5J6WP0BPuFEW4QaB+aKz4FvOwQ05sCZ/qhWuzZCILCiCQ=="
+    },
+    {
+      "body": {
+        "sequence": 17,
+        "case_id": "radio-blackout",
+        "act": "05",
+        "decision": "LOCAL_QUEUED",
+        "source": "AXIS_PUBLIC_SYNTHETIC_FIXTURE",
+        "visibility": "NOT_OBSERVABLE",
+        "prev_hash": "5ef4f3ab0f7298ffc6c73d07fadc8a3b57e6dfd77c125ef16056b03d99f82a6d"
+      },
+      "hash": "9e9a1bbb3f27fe2ca7c6460b0e361b4642830bf69b45c2a8bdf2c1e3f190315b",
+      "signature": "G+DY1aTZmhgoFsypvWfsdJrE7mlU6HJRYaevlwEkfPBxND4GKT6/3hRGuc9e5K5h4WgUSvKKW2WKTSi3lXfOCA=="
+    },
+    {
+      "body": {
+        "sequence": 18,
+        "case_id": "577-rescue",
+        "act": "05",
+        "decision": "HOLD",
+        "source": "AXIS_PUBLIC_SYNTHETIC_FIXTURE",
+        "visibility": "SIMULATED",
+        "prev_hash": "9e9a1bbb3f27fe2ca7c6460b0e361b4642830bf69b45c2a8bdf2c1e3f190315b"
+      },
+      "hash": "ba535c40372e9e6df900a35ccb9eebe8e75269761167bc760cc3a640f7057b28",
+      "signature": "V+KDaykcfX6lloedmq9HNeNpnBGh/DE9L/4BypUT9DB0FWFejsMXDmPVwKwDnoYvIXY5Ur+XRVFBeMNp+AVEAA=="
+    },
+    {
+      "body": {
+        "sequence": 19,
+        "case_id": "pqc-gate",
+        "act": "05",
+        "decision": "HOLD",
+        "source": "AXIS_PUBLIC_SYNTHETIC_FIXTURE",
+        "visibility": "PARTIAL",
+        "prev_hash": "ba535c40372e9e6df900a35ccb9eebe8e75269761167bc760cc3a640f7057b28"
+      },
+      "hash": "64ebd580266caabc7011c5feb4b72a358c0d85ea4a437049a51c1e92617e0e06",
+      "signature": "clB4JSqrC8UVtkij+fo8I+ldhu/wOBbWb5FPplGC+HQ59o2k6m2myRmmr6CPP9uFTi0bpOMAOmMlfCsdkSvHDQ=="
+    },
+    {
+      "body": {
+        "sequence": 20,
+        "case_id": "normal-view",
+        "act": "06",
+        "decision": "DISPLAY_ONLY",
+        "source": "AXIS_PUBLIC_SYNTHETIC_FIXTURE",
+        "visibility": "SIMULATED",
+        "prev_hash": "64ebd580266caabc7011c5feb4b72a358c0d85ea4a437049a51c1e92617e0e06"
+      },
+      "hash": "4a276835adfffc9012b1033db2d7ecc3881caa352e3c4bc0842137461d78a95d",
+      "signature": "krQ1oX7FXX4kLj33YgWou2mJENul3KM+TC8wkUiRybBwLwZkLz6YeOZXNg8ELtxZNokLFJwEWflIp2hI09UdAg=="
+    }
+  ],
+  "limitations": "Public synthetic fixtures only; no production authorization, independent witness, or physical proof"
+}

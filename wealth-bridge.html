@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; img-src 'none'; connect-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+<title>AXIS Wealth Bridge | Synthetic Demo</title>
+<style>
+:root{color-scheme:dark;--bg:#09121d;--panel:#132436;--line:#315269;--text:#f2f6fb;--muted:#adc1d1;--teal:#64e0cd;--amber:#ffcb83;--red:#ff999a}
+*{box-sizing:border-box}body{background:radial-gradient(circle at top right,#1b3e4b 0,#09121d 46%);color:var(--text);font:16px/1.5 system-ui,-apple-system,sans-serif;margin:0}
+main{max-width:1000px;margin:auto;padding:22px 16px 65px}a{color:#a3eef7}h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.1;margin:10px 0}h2{font-size:1.35rem}h3{margin:0 0 5px}.muted,small{color:var(--muted)}small{display:block}.top{padding:21px;border:1px solid #386778;border-radius:18px;background:linear-gradient(115deg,#182f40,#112037)}.eyebrow{color:var(--teal);letter-spacing:.16em;font-size:.75rem;font-weight:800}.flag{display:inline-block;margin:12px 8px 0 0;border:1px solid #ad8351;color:var(--amber);padding:5px 10px;border-radius:25px;font-size:.73rem;font-weight:750}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}.panel{padding:20px;border-radius:16px;border:1px solid var(--line);background:var(--panel)}.full{grid-column:1/-1}
+label{display:block;font-size:.84rem;font-weight:750;color:var(--muted);margin:14px 0 6px}input,select{width:100%;min-height:48px;background:#091725;color:var(--text);border:1px solid #426179;border-radius:10px;font:inherit;padding:10px 12px}button{min-height:48px;border:1px solid #64bdb4;border-radius:10px;background:#163f47;color:#d7fffb;font:inherit;font-weight:750;padding:10px 15px;cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid #fff;outline-offset:2px}
+button:disabled{opacity:.38;cursor:not-allowed}.buttons{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}.buttons button{flex:1 1 190px}.primary{background:var(--teal);color:#082126}
+.bad{border-color:#b46465;background:#46272f;color:#ffdcde}.ghost{border-color:#517186;background:transparent}.status{border-radius:10px;border:1px solid #718b96;background:#102b37;padding:12px 14px;font-weight:800;color:var(--teal)}
+.kv{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #294359;padding:10px 0}.kv span:first-child{color:var(--muted)}.note{background:#242d30;border-left:3px solid var(--amber);border-radius:4px;padding:11px;margin-top:13px;color:#ffdfaf}.logs{max-height:240px;overflow-y:auto;padding-left:21px;color:#cddce9}.logs li{padding:4px 0}
+.signal{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid #46687c;padding:12px;border-radius:12px;margin:10px 0;background:#0f2332}.signal strong{color:var(--teal)}
+.footer{margin-top:30px;font-size:.8rem;color:var(--muted)}@media(max-width:730px){.grid{grid-template-columns:1fr}.full{grid-column:auto}main{padding:12px}.panel{padding:15px}}
+</style></head>
+<body><main>
+<header class="top"><a href="index.html">← Pacific Shadow evidence desk</a><div class="eyebrow" style="margin-top:13px">AXIS WEALTH / CRYPTO ↔ STOCKS</div>
+<h1>One bridge. Two markets.</h1>
+<p class="muted">Choose the source and destination. Review a quote. Simulate the sale, verification of usable proceeds, and a separately authorized purchase. This is not a live broker or exchange.</p>
+<span class="flag">SYNTHETIC DEMONSTRATION</span><span class="flag">NO ACCOUNT CONNECTION</span><span class="flag">NO REAL FUNDS</span></header>
+<div class="grid">
+<section class="panel"><h2>Conversion ticket</h2>
+<label for="direction">Direction</label><select id="direction"><option value="CRYPTO_TO_STOCK">Sell crypto → buy stock</option><option value="STOCK_TO_CRYPTO">Sell stock → buy crypto</option></select>
+<label for="from">Sell this asset (symbol)</label><input id="from" value="BTC" maxlength="15" autocomplete="off" spellcheck="false">
+<label for="to">Buy this asset (symbol)</label><input id="to" value="CORZ" maxlength="15" autocomplete="off" spellcheck="false">
+<label for="amount">Synthetic source sale value in USD</label><input id="amount" type="number" min="1" max="1000000" step="0.01" value="1000">
+<div class="buttons"><button class="primary" id="review">Review conversion</button><button class="ghost" id="reset">Reset</button></div>
+<p class="note">Symbols are examples, not a live asset catalogue. A real provider must confirm asset support, account ownership, eligibility, price, fees and consent before execution.</p></section>
+<section class="panel"><h2>Execution evidence</h2><div id="state" class="status" role="status" aria-live="polite">No ticket reviewed</div>
+<div class="kv"><span>Source gross</span><strong id="gross">—</strong></div>
+<div class="kv"><span>Illustrative source fee</span><strong id="sourceFee">—</strong></div>
+<div class="kv"><span>Eligible buying power</span><strong id="available">—</strong></div>
+<div class="kv"><span>Illustrative destination fee</span><strong id="destinationFee">—</strong></div>
+<div class="kv"><span>Net destination purchase</span><strong id="purchased">—</strong></div>
+<div class="buttons"><button id="sell" disabled>1. Simulate source fill</button><button id="funds" disabled>2. Verify usable proceeds</button><button id="buy" disabled>3. Simulate destination purchase</button><button class="bad" id="reject" disabled>Simulate rejected purchase</button></div>
+<h3 style="margin-top:21px">Audit trail (synthetic)</h3><ol id="log" class="logs"><li>Waiting for a reviewed ticket.</li></ol>
+</section>
+<section class="panel full"><h2>Market Sentinel — explainable example alerts</h2>
+<p class="muted">These deliberately fictional alerts show how AXIS could explain trend signals without pressuring users to trade. No real-time data or predictive accuracy is claimed.</p>
+<div class="buttons"><button id="bull">Show bullish example</button><button id="bear">Show bearish example</button><button id="unknown">Show stale-data HOLD</button></div>
+<div id="marketStatus" class="signal" role="status" aria-live="polite"><span>Select a synthetic market condition.</span><strong>UNKNOWN</strong></div>
+<p id="explain" class="muted">The user controls alerts and any decision. No automatic selling, buying, stop-loss or guaranteed loss prevention.</p>
+</section></div>
+<p class="footer">AXIS GHOSTGRID / PACIFIC SHADOW — fictional lab only. Real transactions would require separately authorized sale and purchase orders, provider-confirmed buying power, institution approval, RYAN policy review and FEACINTH auditing. The destination purchase can fail after a completed source sale; proceeds must then remain recorded as cash.</p>
+</main><script src="bridge-engine.js"></script><script src="bridge-ui.js"></script></body></html>

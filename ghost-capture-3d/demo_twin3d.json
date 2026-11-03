@@ -1,0 +1,19 @@
+{
+  "schema":"axis.ghost.twin3d.v1",
+  "caseId":"SYNTHETIC_CASE",
+  "ingress":"HACKATHON_SYNTHETIC",
+  "claimedObservedEpochMs":1793400000000,
+  "bytes":41,
+  "sha256":"0000000000000000000000000000000000000000000000000000000000000000",
+  "staticTypeHint":"SCRIPT_OR_TEXT",
+  "staticHints":{"urlStringSeen":true,"walletCallStringSeen":true},
+  "semantics":"GRAPH_COORDINATES_NOT_RUNTIME_SCAN",
+  "nodes":[
+    {"id":"ingress","x":0,"y":0,"z":0},
+    {"id":"captured_bytes","x":1,"y":0,"z":0},
+    {"id":"static_metadata","x":2,"y":1,"z":1},
+    {"id":"local_quarantine","x":2,"y":-1,"z":1},
+    {"id":"ryan_review_pending","x":3,"y":0,"z":2}
+  ],
+  "edges":[["ingress","captured_bytes"],["captured_bytes","static_metadata"],["captured_bytes","local_quarantine"],["static_metadata","ryan_review_pending"]]
+}

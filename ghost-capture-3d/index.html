@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; connect-src 'none'; worker-src 'none'; object-src 'none'; img-src 'none'; media-src 'none'; font-src 'none'; frame-src 'none'; style-src 'sha256-tbrXMuvzoKk2vpLlxHggqQ838BGppQkmLtj7YyXNFkw='; script-src 'sha256-22saiCAwEf6aBJhbGpwbPSHj47FijUCcD8BjdHbUmCI='"/>
+<title>AXIS Ghost Capture — 3D Twin Preview</title>
+<style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#080d15;color:#e8eef7;font:14px system-ui,Arial,sans-serif}
+main{max-width:1080px;margin:auto;padding:18px}.top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}h1{font-size:20px;font-weight:700;letter-spacing:.06em;margin:4px 0 8px}.sub{color:#a2adbd;line-height:1.5;margin:0 0 14px}.pill{font-size:11px;letter-spacing:.08em;padding:8px 12px;border:1px solid #355e74;border-radius:25px;color:#7ed5ea;background:#132530}.layout{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:14px}.frame,.panel{border:1px solid #273442;border-radius:12px;background:#111923;overflow:hidden}.frame{position:relative}.frame canvas{display:block;width:100%;height:460px;touch-action:none}.axis{position:absolute;bottom:12px;left:15px;color:#8da0b5;font-size:11px}.panel{padding:16px}label{display:block;color:#afc1d4;margin:10px 0 6px}input[type=range]{width:100%;accent-color:#4be1bd}input[type=file]{max-width:100%;font-size:12px}dl{display:grid;grid-template-columns:1fr auto;gap:8px 5px;font-size:12px;overflow-wrap:anywhere}dt{color:#92a5b6}dd{margin:0;color:#d5e1ed;text-align:right}small{color:#92a5b6}.warning{margin-top:14px;border-left:3px solid #eab76f;background:#272016;padding:10px;color:#eed9bc;font-size:12px;line-height:1.5}@media(max-width:760px){.layout{grid-template-columns:1fr}.frame canvas{height:380px}}
+</style></head>
+<body><main>
+<div class="top"><h1>AXIS / GHOST CAPTURE / 3D TWIN</h1><span class="pill">FORENSIC GRAPH · PREVIEW ONLY</span></div>
+<p class="sub">Interactive 3D relationship map generated from bounded, static evidence. It does not execute files or prove attacker intent. This local preview does not send data over a network.</p>
+<p id="verify-status" role="alert" aria-live="polite">LOCKED — select the pinned synthetic graph to verify.</p>
+<div class="layout"><section class="frame"><canvas id="canvas" aria-label="3D forensic graph"></canvas><div class="axis">Rotate by dragging · Inspect only · RYAN review pending</div></section>
+<aside class="panel"><label>Pinned synthetic demo_twin3d.json (SHA-256 must match)</label><input id="file" type="file" accept="application/json,.json"/><label>Horizontal rotation</label><input id="yaw" type="range" min="-180" max="180" value="-38"/><label>Vertical rotation</label><input id="pitch" type="range" min="-75" max="75" value="21"/><label>Scale</label><input id="zoom" type="range" min="60" max="210" value="126"/>
+<dl><dt>Case</dt><dd id="case">SYNTHETIC</dd><dt>Source</dt><dd id="source">HACKATHON_SYNTHETIC</dd><dt>Nodes</dt><dd id="nodes">5</dd><dt>Links</dt><dd id="links">4</dd><dt>File type hint</dt><dd id="kind">SAMPLE</dd></dl>
+<small>Only the exact SHA-256-pinned synthetic demo graph is accepted. Production must obtain expected digests from a signed AXIS journal, never from untrusted HTML or graph JSON.</small>
+</aside></div><div class="warning">This is a 3D visualization of mapped relationships, not 3D imaging of malware, decompilation, sandbox execution, or real-time interception. Quarantine and RYAN permission checks must be enforced by the existing app.</div>
+</main><script>
+'use strict';
+const c=document.getElementById('canvas'),ctx=c.getContext('2d');
+const EXPECTED_GRAPH_SHA256='7a88ca199c9e43a96f47621de9a4837fc883b9e9490a88baa48808e04d0c126d';
+let graph=null, lockdown=false;
+let yaw=-38,pitch=21,zoom=126;
+const status=document.getElementById('verify-status');
+function lock(reason){
+    lockdown=true; graph=null;
+    document.getElementById('file').disabled=true;
+    status.textContent='INTEGRITY FAILURE — LOCKDOWN: '+String(reason).slice(0,80);
+    document.getElementById('case').textContent='LOCKED';
+    document.getElementById('source').textContent='LOCKED';
+    document.getElementById('kind').textContent='LOCKED';
+    document.getElementById('nodes').textContent='0';
+    document.getElementById('links').textContent='0';
+    render();
+}
+
+const clean=s=>String(s).slice(0,64).replace(/[^A-Za-z0-9_:-]/g,'');
+const position=n=>{const x=Number(n.x),y=Number(n.y),z=Number(n.z);if(![x,y,z].every(Number.isFinite)||Math.max(Math.abs(x),Math.abs(y),Math.abs(z))>1000)throw Error('Unbounded coordinate');return {x,y,z}};
+function resize(){const r=c.getBoundingClientRect();const d=Math.min(window.devicePixelRatio||1,2);c.width=Math.ceil(r.width*d);c.height=Math.ceil(r.height*d);ctx.setTransform(d,0,0,d,0,0);render()}
+function project(n){let {x,y,z}=position(n);x-=1.5;z-=.7;let a=yaw*Math.PI/180,b=pitch*Math.PI/180;let xx=x*Math.cos(a)-y*Math.sin(a),yy=x*Math.sin(a)+y*Math.cos(a);let height=yy*Math.sin(b)+z*Math.cos(b);return {x:c.getBoundingClientRect().width/2+xx*zoom,y:c.getBoundingClientRect().height/2-height*zoom}}
+function render(){const w=c.getBoundingClientRect().width,h=c.getBoundingClientRect().height;ctx.clearRect(0,0,w,h);if(!graph){ctx.fillStyle='#eab76f';ctx.textAlign='center';ctx.font='bold 16px system-ui';ctx.fillText(lockdown?'LOCKDOWN: INTEGRITY FAILED':'NO VERIFIED GRAPH',w/2,h/2);return;}ctx.strokeStyle='#243346';ctx.lineWidth=1;for(let x=0;x<w;x+=35){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,h);ctx.stroke()}for(let y=0;y<h;y+=35){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke()}const map=new Map(graph.nodes.map(n=>[n.id,n]));for(const e of graph.edges){const a=map.get(e[0]),b=map.get(e[1]);if(!a||!b)continue;const p=project(a),q=project(b);ctx.strokeStyle='#3da98f';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke()}for(const n of graph.nodes){const p=project(n),risk=n.id==='local_quarantine';ctx.beginPath();ctx.arc(p.x,p.y,9,0,Math.PI*2);ctx.fillStyle=risk?'#ffc37e':'#55cfcb';ctx.fill();ctx.beginPath();ctx.arc(p.x,p.y,16,0,Math.PI*2);ctx.strokeStyle=risk?'#5b442d':'#235455';ctx.stroke();ctx.fillStyle='#f0f6ff';ctx.font='12px system-ui';ctx.textAlign='center';ctx.fillText(clean(n.id).replaceAll('_',' '),p.x,p.y-22)}}
+function setGraph(g){if(lockdown)throw Error('LOCKDOWN');if(!g||g.schema!=='axis.ghost.twin3d.v1'||!Array.isArray(g.nodes)||!Array.isArray(g.edges)||g.nodes.length>64||g.edges.length>128)throw Error('Not an AXIS 3D graph');const ids=new Set();for(const n of g.nodes){if(!n||typeof n.id!=='string'||!n.id.match(/^[a-zA-Z0-9_-]{1,64}$/)||ids.has(n.id))throw Error('Invalid node');ids.add(n.id);position(n)}for(const e of g.edges){if(!Array.isArray(e)||e.length!==2||!ids.has(e[0])||!ids.has(e[1]))throw Error('Invalid edge')}graph=g;document.getElementById('case').textContent=clean(g.caseId);document.getElementById('source').textContent=clean(g.ingress);document.getElementById('nodes').textContent=g.nodes.length;document.getElementById('links').textContent=g.edges.length;document.getElementById('kind').textContent=clean(g.staticTypeHint);render()}
+for(const id of ['yaw','pitch','zoom'])document.getElementById(id).oninput=e=>{const v=Number(e.target.value);if(id==='yaw')yaw=v;else if(id==='pitch')pitch=v;else zoom=v;render()};
+document.getElementById('file').addEventListener('change',async e=>{
+    if(lockdown)return;
+    const f=e.target.files[0];
+    if(!f)return;
+    try {
+        if(f.size<=0 || f.size>65536)throw Error('UNBOUNDED_GRAPH');
+        if(!globalThis.crypto || !crypto.subtle)throw Error('CRYPTO_VERIFIER_UNAVAILABLE');
+        const bytes=await f.arrayBuffer();
+        const digest=new Uint8Array(await crypto.subtle.digest('SHA-256',bytes));
+        const actual=Array.from(digest,b=>b.toString(16).padStart(2,'0')).join('');
+        if(actual!==EXPECTED_GRAPH_SHA256)throw Error('GRAPH_SHA256_MISMATCH');
+        const json=new TextDecoder('utf-8',{fatal:true}).decode(bytes);
+        setGraph(JSON.parse(json));
+        status.textContent='PINNED SYNTHETIC GRAPH VERIFIED — PREVIEW ONLY';
+    } catch(err){lock(err.message || 'VERIFY_FAILED')}
+});
+let dragging=false,lastX=0,lastY=0;c.addEventListener('pointerdown',e=>{dragging=true;lastX=e.clientX;lastY=e.clientY;c.setPointerCapture(e.pointerId)});c.addEventListener('pointerup',()=>dragging=false);c.addEventListener('pointermove',e=>{if(!dragging)return;yaw=Math.max(-180,Math.min(180,yaw+e.clientX-lastX));pitch=Math.max(-75,Math.min(75,pitch+(e.clientY-lastY)*.5));lastX=e.clientX;lastY=e.clientY;document.getElementById('yaw').value=yaw;document.getElementById('pitch').value=pitch;render()});window.addEventListener('resize',resize);resize();
+</script></body></html>

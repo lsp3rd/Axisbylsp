@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Scam Shield</title>
+<style>
+:root{--bg:#f3f5f9;--cd:#fff;--tx:#111827;--mu:#5a6578;--ac:#0b6e4f;--ok:#0b6e4f;--wa:#b45f06;--bad:#c1121f;--bd:#d9e0ea;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c1117;--cd:#151d27;--tx:#e9eef5;--mu:#98a4b6;--ac:#3ddc97;--ok:#3ddc97;--wa:#ffb703;--bad:#ff5d73;--bd:#263243}}
+:root[data-theme="dark"]{--bg:#0c1117;--cd:#151d27;--tx:#e9eef5;--mu:#98a4b6;--ac:#3ddc97;--ok:#3ddc97;--wa:#ffb703;--bad:#ff5d73;--bd:#263243}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:600px;margin:0 auto;padding:18px 14px 44px}
+h1{font-size:30px;margin:4px 0;letter-spacing:-.02em;line-height:1.1}
+h2{font-size:17px;margin:0 0 8px}
+p{margin:0 0 10px;color:var(--mu)}
+.card{background:var(--cd);border:1px solid var(--bd);border-radius:14px;padding:14px;margin:14px 0}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:14px 0 0}
+.tabs button{font:inherit;font-weight:600;padding:10px 4px;border-radius:10px;border:1px solid var(--bd);background:var(--cd);color:var(--mu);cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--ac);color:#fff;border-color:var(--ac)}
+:root:not([data-theme="light"]) .tabs button[aria-selected="true"]{color:#06130d}
+textarea,input[type=text]{width:100%;font:inherit;color:var(--tx);background:var(--bg);border:1px solid var(--bd);border-radius:10px;padding:10px}
+textarea{min-height:130px;resize:vertical}
+button:focus-visible,textarea:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.b{font:inherit;font-weight:700;border:0;border-radius:10px;padding:11px 16px;cursor:pointer;background:var(--ac);color:#fff}
+:root:not([data-theme="light"]) .b{color:#06130d}
+.b.g{background:transparent;color:var(--mu);border:1px solid var(--bd);font-weight:600}
+.row{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.res{margin-top:14px}
+.meter{height:14px;border-radius:7px;background:var(--bd);overflow:hidden}
+.meter i{display:block;height:100%;width:0;border-radius:7px;transition:width .4s}
+.lvl{font-size:24px;font-weight:800;letter-spacing:-.02em;margin:8px 0 2px}
+.ok{color:var(--ok)}.wa{color:var(--wa)}.bad{color:var(--bad)}
+ul.fl{list-style:none;margin:8px 0 0;padding:0}
+ul.fl li{padding:8px 0;border-top:1px solid var(--bd)}
+ul.fl b{display:block}
+ul.fl span{color:var(--mu);font-size:14px}
+label.ck{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--bd);cursor:pointer}
+label.ck:first-of-type{border-top:0}
+label.ck input{width:22px;height:22px;margin-top:2px;accent-color:var(--ac);flex:none}
+details{margin:10px 0}summary{font-weight:700;cursor:pointer}
+ol{padding-left:20px;color:var(--mu)}li{margin:5px 0}
+.host{font:600 15px ui-monospace,Menlo,monospace;word-break:break-all;background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:8px;margin-top:10px}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){.meter i{transition:none}}
+</style></head>
+<body><main>
+<h1>Scam Shield</h1>
+<p>Check a message, a link or a payment before you act. Everything runs on your phone. Nothing you paste is sent anywhere.</p>
+
+<div class="tabs" role="tablist">
+<button role="tab" aria-selected="true" data-t="msg">Message</button>
+<button role="tab" aria-selected="false" data-t="lnk">Link</button>
+<button role="tab" aria-selected="false" data-t="pay">Before I pay</button>
+</div>
+
+<section class="card" id="msg">
+<h2>Paste a text, email or chat</h2>
+<textarea id="mt" placeholder="Paste the message here. English and Tagalog work." aria-label="Message to check"></textarea>
+<div class="row"><button class="b" id="mgo">Check message</button><button class="b g" id="mex">Try an example</button></div>
+<div class="res" id="mr" hidden></div>
+</section>
+
+<section class="card" id="lnk" hidden>
+<h2>Paste a link</h2>
+<input type="text" id="lt" inputmode="url" autocapitalize="off" autocorrect="off" placeholder="https://…" aria-label="Link to check">
+<div class="row"><button class="b" id="lgo">Check link</button><button class="b g" id="lex">Try an example</button></div>
+<div class="res" id="lr" hidden></div>
+</section>
+
+<section class="card" id="pay" hidden>
+<h2>Tick everything that’s true</h2>
+<div id="pl"></div>
+<div class="row"><button class="b" id="pgo">Check payment</button></div>
+<div class="res" id="pr" hidden></div>
+</section>
+
+<details class="card" open>
+<summary>Already sent money or shared a code?</summary>
+<ol>
+<li>Open your bank or e-wallet’s official app and report it right now. Fast reports have the best chance of freezing the transfer.</li>
+<li>Change your passwords and turn on passkeys or app-based login. Log out other devices.</li>
+<li>Screenshot the chat, number, account name and receipts before anything is deleted.</li>
+<li>Report to the PNP Anti-Cybercrime Group or the NBI Cybercrime Division, and to your bank or e-wallet.</li>
+<li>Ignore anyone offering to “recover” your money for a fee. That is usually a second scam.</li>
+</ol>
+</details>
+<p style="font-size:13px">This is a checklist-style helper, not a guarantee. A low score doesn’t mean something is safe. When unsure, contact the company using the number inside its official app or on your card.</p>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const LV=s=>s>=55?['bad','High risk','Don’t reply, click or pay.']:s>=25?['wa','Be careful','Several warning signs. Verify through an official channel you look up yourself.']:['ok','Low signs','No strong red flags found, but scams can look clean. Stay alert.'];
+function show(el,score,flags,extra){const [c,t,a]=LV(score);
+const colv=c=='bad'?'var(--bad)':c=='wa'?'var(--wa)':'var(--ok)';
+el.hidden=false;
+el.innerHTML=`<div class="meter" role="img" aria-label="Risk ${score} out of 100"><i style="background:${colv}"></i></div><div class="lvl ${c}">${t} · ${score}/100</div><p>${a}</p>${extra||''}<ul class="fl">${flags.map(f=>`<li><b>${f[0]}</b><span>${f[1]}</span></li>`).join('')||'<li><span>No warning signs matched.</span></li>'}</ul>`;
+requestAnimationFrame(()=>el.querySelector('i').style.width=score+'%');el.scrollIntoView({block:'nearest',behavior:'smooth'})}
+
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-selected',x==b));['msg','lnk','pay'].forEach(id=>$(id).hidden=id!=b.dataset.t)});
+
+const R=[
+[/\b(otp|one[- ]?time (pin|password|code)|pin|password|cvv|verification code|security code|mpin)\b/i,40,"Asks for a code or password","Real banks and e-wallets never ask you to send or read out an OTP, PIN or password."],
+[/\b(gift ?card|itunes|google play card|steam card|bitcoin|btc|usdt|crypto|western union|moneygram|e-?load|load card)\b/i,30,"Untraceable payment method","Gift cards, crypto and load are favorites because they are hard to reverse."],
+[/\b(urgent|immediately|right now|asap|within \d+ ?(hour|hr|minute|min)|last chance|final notice|expires? (today|soon)|agad|ngayon na|ngayon din)\b/i,15,"Pressure to act fast","Scammers rush you so you don’t stop to check."],
+[/\b(congratulations|congrats|you(’|')?ve won|you won|winner|prize|lottery|raffle|claim your|panalo|nanalo)\b/i,25,"Prize or windfall","If you didn’t enter, you didn’t win."],
+[/\b(don(’|')?t tell|do not tell|keep (this|it) (secret|between)|confidential|wag (mong )?sabihin|huwag (mong )?sabihin)\b/i,20,"Asks for secrecy","Isolating you from family and friends is a classic tactic."],
+[/\b(account|wallet|card)\b.{0,40}\b(suspended|locked|blocked|closed|deactivated|compromised|limited)\b|\b(unauthori[sz]ed|suspicious) (activity|login|transaction)\b/i,20,"Account-problem scare","Open your official app yourself instead of using any link in the message."],
+[/\b(arrest|warrant|case (filed|against)|legal action|nakulong|ikukulong|subpoena|fine of)\b/i,20,"Threat of arrest or legal trouble","Government offices do not demand payment by text or chat."],
+[/\b(work from home|part[- ]?time job|earn (₱|php|p)?\s?\d|per day|daily income|commission|guaranteed (profit|return)|double your|investment (opportunity|slot)|like and (share|subscribe) task|trabaho online)\b/i,25,"Too-good-to-be-true earnings","Task-for-pay and guaranteed-return offers are a major scam type."],
+[/\b(mom|mama|nanay|papa|tatay|anak|kuya|ate|lola|lolo)\b.{0,80}\b(accident|hospital|arrest|jail|emergency|new number|bagong number|nasira ang phone)\b|\b(new number|bagong number)\b/i,20,"Family-emergency or new-number story","Call the person on their old number or ask a question only they could answer."],
+[/\b(bsp|bdo|bpi|metrobank|unionbank|landbank|gcash|maya|paymaya|bir|sss|philhealth|pag-?ibig|lto|nbi|pnp|customs|dhl|lbc|j&t|lazada|shopee|globe|smart)\b/i,10,"Names a known brand or agency","Anyone can type a brand name. Check the sender through official channels."],
+[/(bit\.ly|tinyurl|t\.co|cutt\.ly|rb\.gy|is\.gd|shorturl|s\.id)\//i,20,"Shortened link","It hides where the link really goes."],
+[/https?:\/\/|www\./i,8,"Contains a link","Don’t tap links in unexpected messages."],
+[/\b(send|ipadala|transfer|deposit|pay|bayad)\b.{0,50}\b(₱|php|p\s?\d|\d{3,})/i,15,"Asks you to send money","Never pay someone who contacted you first without verifying them."]
+];
+function scoreMsg(t){let s=0,f=[];for(const [re,w,a,b] of R){if(re.test(t)){s+=w;f.push([a,b])}}
+if(/https?:\/\/|www\./i.test(t)&&/\b(bsp|bdo|bpi|gcash|maya|bir|sss|lbc|dhl|shopee|lazada)\b/i.test(t)){s+=15;f.push(["Brand name plus a link","A common phishing combination."])}
+return [Math.min(100,s),f]}
+$('mgo').onclick=()=>{const t=$('mt').value.trim();if(!t){$('mt').focus();return}const [s,f]=scoreMsg(t);show($('mr'),s,f)};
+$('mex').onclick=()=>{$('mt').value="URGENT: Your GCash account has been suspended due to suspicious activity. Verify within 2 hours or it will be closed. Send your OTP to our agent and tap https://bit.ly/gcash-verify. Don’t tell anyone.";$('mgo').click()};
+
+const OFF={gcash:['gcash.com'],maya:['maya.ph','paymaya.com'],bdo:['bdo.com.ph'],bpi:['bpi.com.ph'],metrobank:['metrobank.com.ph'],paypal:['paypal.com'],facebook:['facebook.com','fb.com'],lazada:['lazada.com.ph','lazada.com'],shopee:['shopee.ph','shopee.com'],lbc:['lbcexpress.com'],dhl:['dhl.com']};
+const SH=/^(bit\.ly|tinyurl\.com|t\.co|cutt\.ly|rb\.gy|is\.gd|shorturl\.at|s\.id)$/i;
+const BADTLD=/\.(top|xyz|click|live|icu|cfd|sbs|rest|zip|mov|buzz|monster|cyou|work|support|loan)$/i;
+function checkLink(raw){let u;try{u=new URL(/^[a-z]+:\/\//i.test(raw)?raw:'https://'+raw)}catch(e){return null}
+const h=u.hostname.toLowerCase(),f=[];let s=0;const add=(w,a,b)=>{s+=w;f.push([a,b])};
+if(u.protocol!='https:')add(15,"Not encrypted (http)","Real login and payment pages use https.");
+if(SH.test(h))add(30,"Shortened link","You can’t see the real destination.");
+if(h.includes('xn--'))add(30,"Disguised characters in the address","Punycode can imitate a real site with look-alike letters.");
+if(u.username||raw.includes('@'))add(30,"Contains an @ trick","Everything before the @ is ignored; the real site is after it.");
+if(/^\d{1,3}(\.\d{1,3}){3}$/.test(h))add(30,"Raw IP address","Legitimate brands use names, not numbers.");
+if(h.split('.').length>4)add(15,"Many sub-domains","Long chains are used to bury the real domain.");
+if((h.match(/-/g)||[]).length>=2)add(10,"Several hyphens","Typical of throwaway look-alike domains.");
+if(/[a-z][01][a-z]/.test(h.replace(/\.[a-z]+$/,'')))add(20,"Digit swapped for a letter","Like g0v or paypa1.");
+if(BADTLD.test(h))add(20,"Cheap, often-abused ending","These endings are popular for short-lived scam sites.");
+for(const b in OFF){if((h.includes(b)||u.pathname.toLowerCase().includes(b))&&!OFF[b].some(d=>h===d||h.endsWith('.'+d))){add(40,`Pretends to be ${b}`,`The real ${b} site ends in ${OFF[b][0]}. This one doesn’t.`);break}}
+if(/gov/.test(h)&&!/\.gov\.ph$/.test(h))add(25,"Looks governmental but isn’t .gov.ph","Philippine government sites end in .gov.ph.");
+return [Math.min(100,s),f,h]}
+$('lgo').onclick=()=>{const r=checkLink($('lt').value.trim());if(!r){$('lt').focus();show($('lr'),0,[["That doesn’t look like a link","Paste the full address, for example https://example.com."]]);$('lr').querySelector('.lvl').textContent='Couldn’t read it';return}
+show($('lr'),r[0],r[1],`<div class="host" title="The real site is this host">Real site: ${r[2].replace(/[<>&]/g,'')}</div>`)};
+$('lex').onclick=()=>{$('lt').value='http://gcash-verify-login.top/secure';$('lgo').click()};
+
+const PQ=[["They contacted me first, out of the blue",15],["I’m being rushed or told to act now",15],["I was asked to keep it secret",25],["They asked for my OTP, PIN or password",50],["I’m told to pay with gift cards, crypto or load",40],["The account is new or the name doesn’t match the person",20],["It promises a prize or big guaranteed returns",25],["I haven’t verified using a number or site I looked up myself",15]];
+$('pl').innerHTML=PQ.map((q,i)=>`<label class="ck"><input type="checkbox" data-w="${q[1]}" data-i="${i}"><span>${q[0]}</span></label>`).join('');
+$('pgo').onclick=()=>{let s=0,f=[];document.querySelectorAll('#pl input:checked').forEach(c=>{s+=+c.dataset.w;f.push([PQ[c.dataset.i][0],"Counts as a warning sign."])});
+s=Math.min(100,s);const crit=[3,4].some(i=>document.querySelector(`#pl input[data-i="${i}"]`).checked);
+if(crit)s=Math.max(s,80);
+show($('pr'),s,f,crit?'<p class="bad"><b>Stop. Sharing a code or paying by gift card or crypto is never part of a real transaction.</b></p>':'<p>Pause for ten minutes. Call the person or company using a number from their official app or your card.</p>')};
+</script></body></html>

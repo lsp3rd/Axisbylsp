@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; img-src 'self' data:; font-src 'none'; connect-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+<title>AXIS GHOSTGRID | Pacific Shadow — Offline Judge Demo</title>
+<style>
+:root{color-scheme:dark;--b:#080e18;--c:#0e1927;--c2:#142335;--line:#283b4d;--t:#e8f2fc;--m:#9ab0c4;--cyan:#44d9df;--gold:#ffca79;--red:#ff8287}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 40% -20%,#19384a,transparent 65%),var(--b);color:var(--t);font:15px/1.52 system-ui,-apple-system,sans-serif}
+a{color:#8ee8eb}button{font:inherit;cursor:pointer}.wrap{max-width:1250px;margin:auto;padding:20px}
+.hero{padding:30px 24px;background:linear-gradient(120deg,#122b3d,#0e1524);border:1px solid #39616e;border-radius:18px}
+.eyebrow{letter-spacing:.2em;color:var(--cyan);font-size:.76rem;font-weight:800}.hero h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.08;margin:12px 0}.subtitle{color:#bacdde;max-width:900px}
+.flag{display:inline-block;border:1px solid #a77b35;border-radius:20px;color:var(--gold);font-size:.74rem;font-weight:700;padding:5px 10px;margin:7px 6px 0 0}
+h2{font-size:1.4rem;margin:24px 0 12px}h3{font-size:1.04rem;margin:0 0 8px}p{margin:9px 0}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0}
+.stat{padding:15px;border:1px solid var(--line);border-radius:12px;background:var(--c)}.stat b{font-size:1.55rem;display:block}.stat small{color:var(--m)}
+.app{display:grid;grid-template-columns:minmax(210px,290px) minmax(0,1fr);gap:16px}
+.panel{background:var(--c);border:1px solid var(--line);border-radius:14px;padding:17px}
+.chapter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.chapter button{background:#172b3d;border:1px solid #345367;color:#d6e9f5;padding:7px 11px;border-radius:50px;font-size:.8rem}
+.chapter button.on{color:#05151b;background:var(--cyan);border-color:var(--cyan)}
+#cases{display:flex;flex-direction:column;gap:5px;max-height:560px;overflow:auto}#cases button{text-align:left;color:#d9e9f5;background:transparent;border:1px solid transparent;border-radius:9px;padding:11px}
+#cases button:hover,#cases button.selected{background:#1a3447;border-color:#3c7481}#cases small{display:block;color:#90b6c4}
+.decision{font-weight:800;letter-spacing:.09em;font-size:1.05rem;padding:7px 12px;background:#28333e;border:1px solid #61717a;border-radius:8px;display:inline-block}
+.decision.hold{color:var(--gold);border-color:#8b6b38}.decision.deny{color:var(--red);border-color:#98505c}.decision.review{color:var(--cyan);border-color:#267a81}
+.callout{padding:12px;border-left:3px solid var(--gold);background:#162536;color:#f1d8af;margin-top:15px;border-radius:4px}
+.kv{display:grid;grid-template-columns:minmax(105px,150px) 1fr;gap:7px;border-top:1px solid var(--line);padding:10px 0}.kv span:first-child{color:var(--m)}
+.caps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.cap{border:1px solid var(--line);border-radius:9px;padding:10px;background:#101f2e}.cap b{display:block;font-size:.83rem}.cap small{color:#9bb4c6;font-size:.73rem;overflow-wrap:anywhere}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.step{border:1px solid var(--line);border-radius:10px;padding:14px;background:#112235}.step em{font-style:normal;color:var(--cyan);font-weight:800;font-size:.8rem}
+footer{color:var(--m);padding:35px 0;font-size:.85rem}.small{font-size:.8rem;color:var(--m);overflow-wrap:anywhere}.linkbar{display:flex;gap:12px;flex-wrap:wrap;margin-top:13px}.linkbar a{background:#15394b;border:1px solid #347081;border-radius:9px;padding:9px 13px;text-decoration:none;color:#d7f7f5}
+@media(max-width:800px){.stats{grid-template-columns:repeat(2,1fr)}.app{grid-template-columns:1fr}.caps{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:1fr}.wrap{padding:12px}}
+@media(prefers-reduced-motion:no-preference){button{transition:background .15s}}
+</style></head><body>
+<main class="wrap">
+<header class="hero"><div class="eyebrow">AXIS / FEACINTH / PACIFIC SHADOW</div>
+<h1>Evidence before authority.</h1><p class="subtitle">A fictional international cybersecurity crisis moves from compromised crypto credentials to false intelligence, a simulated power-grid blackout and rescue continuity. Every choice remains bounded by evidence, independent audit and human authorization.</p>
+<span class="flag">SELF-CONTAINED · NO EXTERNAL API CALLS</span><span class="flag">SYNTHETIC SCENARIOS</span><span class="flag">NO PRODUCTION CONTROL</span><span class="flag">NO DISPATCH / NO WALLET ACCESS</span>
+<div class="linkbar"><a href="wealth-bridge.html">Wealth Bridge · crypto ↔ stocks</a><a href="story.html">Pacific Shadow · nine fictional scenes</a><a href="tracer-lab.html">Crypto Tracer · synthetic</a><a href="ghostgrid-v10.html">GhostGrid 10-case lab</a><a href="ghostgrid-v8.html">V8 offline replay</a><a href="scam-shield.html">Scam Shield checker</a><a href="ghost-capture-3d/index.html">Ghost Capture 3D</a><a href="receipts.json">Signed synthetic receipts</a><a href="PACIFIC_SHADOW_180S_TECHNICAL_CUT.mp4">3-minute technical walkthrough (edited, synthetic)</a><a href="PACIFIC_SHADOW_OFFLINE_TECHNICAL_PREVIEW.mp4">80-second technical preview</a><a href="README_PUBLIC.md">Public source and limitations</a></div>
+</header>
+<section class="stats" id="stats" aria-label="Run overview"></section>
+<h2>Interactive crisis evidence desk</h2><div class="chapter" id="chapters"></div>
+<div class="app"><aside class="panel"><h3>Choose a synthetic incident</h3><div id="cases"></div></aside>
+<article class="panel" aria-live="polite"><div class="eyebrow" id="act"></div><h2 id="title"></h2><p id="description"></p>
+<div style="margin:18px 0"><span id="decision" class="decision"></span></div>
+<div class="kv"><span>Visibility</span><span id="visibility"></span></div>
+<div class="kv"><span>Evidence proof</span><span>Synthetic event / locally signed software fixture</span></div>
+<div class="kv"><span>Authority</span><span>NO RYAN JNI execution. FEACINTH is a narrative independent audit role.</span></div>
+<div class="kv"><span>Sequence</span><span id="sequence"></span></div>
+<p class="callout" id="reason"></p><p class="small">The user controls this offline replay. No network telemetry, military data, actual account credentials or actual emergency message is accessed.</p></article></div>
+<h2>Pacific Shadow — six evidence chapters (see nine-scene story)</h2><div class="steps" id="story"></div>
+<h2>S21 offline test evidence</h2><p class="small">These are isolated module tests executed locally. They do not establish the Android production/security integration.</p><div class="caps" id="tests"></div>
+<h2>Complete system inventory — 21 workstreams</h2><div class="caps" id="capabilities"></div>
+<section class="panel" style="margin-top:18px"><h3>Cryptographic receipt details</h3><p class="small">An ephemeral Ed25519 software key signed SHA-256-linked fictional receipts during the Termux build. Public verifier: <a href="receipts.json">receipts.json</a>. This is NOT a device-bound RYAN signature, authenticated witness or durable hardware rollback floor.</p><div class="kv"><span>Receipt root</span><code id="root" style="overflow-wrap:anywhere"></code></div><div class="kv"><span>Model API</span><strong>NOT CALLED — offline requirement</strong></div><div class="kv"><span>Production status</span><strong>S21 historical debug build; new S21 and S25 release unverified</strong></div></section>
+<footer>AXIS GHOSTGRID — Pacific Shadow, November 2026. Fictional judge-facing demonstration only. Existing com.axis.security retained. No internet, satellite, Bluetooth, Wi-Fi bridge or real counter-operations. No autonomous authority.</footer>
+</main><script src="data.js"></script><script src="ui.js"></script></body></html>
